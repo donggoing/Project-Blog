@@ -1,0 +1,19 @@
+.DS_Store
+./Server/node_modules
+session-store.db
+./blog-vue/node_modules
+./blog-vue/test/unit/coverage/
+./blog-vue/test/e2e/reports/
+./blog-vue/dist/
+selenium-debug.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
