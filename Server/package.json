@@ -1,0 +1,32 @@
+{
+  "name": "Blog",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bcrypt-nodejs": "0.0.3",
+    "connect-loki": "^1.1.0",
+    "connect-mongo": "^2.0.3",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "express-session": "^1.15.6",
+    "http-errors": "~1.6.2",
+    "moment": "^2.24.0",
+    "mongojs": "^2.6.0",
+    "mongoose": "^5.4.5",
+    "morgan": "~1.9.0",
+    "pug": "^2.0.3",
+    "session-file-store": "^1.2.0",
+    "vue": "^2.5.22",
+    "vue-cli": "^2.9.6",
+    "vuex": "^3.1.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.29.0"
+  }
+}
