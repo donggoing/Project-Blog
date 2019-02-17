@@ -240,6 +240,7 @@ module.exports=function(db){
    
     /**
      * 获取当前用户对博客的评论或回复
+     * 实现数据分页传输
      */
     api.post('/getcomments',(req,res)=>{
         var user=req.session.loginUser,
@@ -268,6 +269,7 @@ module.exports=function(db){
 
     /**
      * 获取当前用户发表的博客，包括被管理员隐藏的（不包括content）
+     * 实现数据分页传输
      */
     api.post('/:user/getblogs',function(req,res){
         var user=req.params.user,
@@ -289,6 +291,7 @@ module.exports=function(db){
 
     /**
      * 获取所有未被隐藏的博客（不包括content）
+     * 实现数据分页传输
      */
     api.post('/getallblogs',(req,res)=>{
         var page=req.body.page
@@ -327,6 +330,7 @@ module.exports=function(db){
      * 根据queryType决定查询document
      * 不包括被管理员隐藏的
      * 也不包括博客的content
+     * 实现数据分页传输
      */
     api.post('/search',(req,res)=>{
         var queryType=req.body.type,

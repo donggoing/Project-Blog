@@ -8,4 +8,4 @@
 
 - 后端登录状态通过使用session持续化保存，前端登录状态使用localStore+vuex进行状态管理
 
-- 前端使用了element-ui
+- 前端使用了element-ui进行美化及实现分页功能，另外使用showdown用于简单的markdown文本编辑和显示(目前支持tab键缩进)

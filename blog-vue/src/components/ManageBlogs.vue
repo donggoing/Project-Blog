@@ -196,7 +196,7 @@ export default {
 
     #container{
         width:100%;
-        margin:0 auto;
+        margin:0 auto 80px;
         position: relative;
         text-align: left
     }
