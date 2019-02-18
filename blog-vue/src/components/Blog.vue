@@ -36,7 +36,7 @@ export default {
     components:{Comments,Menu},
     created(){
         this.blog_id=this.$route.query.blog_id
-        this.$http.get('http://localhost:3000/api/getblog/'+this.blog_id).then(
+        this.$http.get('/api/getblog/'+this.blog_id).then(
             res=>{
                 res.data.data.postDate=this.$moment(this.$moment.utc(res.data.data.postDate).toDate()).format('YYYY-MM-DD HH:mm:ss')
                 res.data.data.lastPostDate=this.$moment(this.$moment.utc(res.data.data.lastPostDate).toDate()).format('YYYY-MM-DD HH:mm:ss')

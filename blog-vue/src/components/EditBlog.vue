@@ -29,7 +29,7 @@ export default {
     components:{Edit,Menu},
     created() {
         this.blog_id=this.$route.query.blog_id
-        this.$http.get('http://localhost:3000/api/getblog/'+this.blog_id).then(
+        this.$http.get('/api/getblog/'+this.blog_id).then(
             res=>{
                 if(res.data.success){
                     this.title=res.data.data.title
@@ -68,7 +68,7 @@ export default {
                 newcontent:this.$refs.edit.content,
                 user:this.$store.getters.username
             }
-            this.$http.post('http://localhost:3000/api/'+this.blog_id+'/updateblog',data).then(
+            this.$http.post('/api/'+this.blog_id+'/updateblog',data).then(
                 res=>{
                     if(res.data.message){
                         this.$message(res.data.message)

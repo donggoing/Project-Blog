@@ -18,8 +18,7 @@ var converter = new showdown.Converter()
 
 Vue.prototype.converter = converter
 Vue.config.productionTip = false
-// axios.defaults.withCredentials = true
-// axios.defaults.crossDomain = true
+axios.defaults.baseURL = 'http://localhost:3000'
 Vue.prototype.$http = axios
 Vue.prototype.$http.defaults.withCredentials = true
 

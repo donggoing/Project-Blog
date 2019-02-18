@@ -93,7 +93,7 @@ export default {
         getblogs(){
             this.searching=0
             this.refreshTime=this.$moment(Date.now()).format('HH:mm:ss')
-            this.$http.post('http://localhost:3000/api/getallblogs',{
+            this.$http.post('/api/getallblogs',{
                 page: this.currentPage,limit:this.pageSize
             }).then(
             res=>{
@@ -131,7 +131,7 @@ export default {
         doSearch(){
             var queryType=this.queryType, 
                 queryVal=this.queryVal
-                this.$http.post('http://localhost:3000/api/search',{
+                this.$http.post('/api/search',{
                 val:queryVal,
                 type:queryType,
                 page:this.currentPage,

@@ -18,7 +18,7 @@ export default {
     components:{Menu},
     methods:{
         logout(){
-            this.$http.get('http://localhost:3000/logout').then(
+            this.$http.get('/logout').then(
                 res=>{
                     this.$message("成功退出");
                 },

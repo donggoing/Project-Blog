@@ -37,7 +37,7 @@ export default {
   //     var blog=this.blogcontent
   //     if(!title.match(/^ *$/)){
   //       if(!blog.match(/^ *$/)){
-  //       this.$http.post("http://localhost:3000/api/"+this.username+"/newblog",{
+  //       this.$http.post("/api/"+this.username+"/newblog",{
   //         title : title,
   //         newblog: blog
   //       }).then(

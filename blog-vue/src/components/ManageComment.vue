@@ -90,7 +90,7 @@ export default {
     },
     methods:{
         init(){
-            this.$http.get('http://localhost:3000/api/getcomments/'+this.blog_id).then(
+            this.$http.get('/api/getcomments/'+this.blog_id).then(
                 res=>{
                     var comments=res.data.data
                     if(comments.length===0)
@@ -122,7 +122,7 @@ export default {
 
         submitR2C(comment){
             if(comment.newreply.match(/^ *$/))return this.$message('回复不允许为空~')
-            this.$http.post('http://localhost:3000/api/reply/'+comment.blog_id+'/'+comment._id,
+            this.$http.post('/api/reply/'+comment.blog_id+'/'+comment._id,
             {content:comment.newreply,
             blog_id:this.blog_id,
             comment_id:comment._id,
@@ -144,7 +144,7 @@ export default {
         },
         submitR2R(reply){
             if(reply.newreply.match(/^ *$/))return this.$message('回复不允许为空~')
-            this.$http.post('http://localhost:3000/api/reply/'+reply.blog_id+'/'+reply.comment_id,
+            this.$http.post('/api/reply/'+reply.blog_id+'/'+reply.comment_id,
             {content:reply.newreply,
             to_comment:false,
             reply_id:reply._id,
@@ -165,7 +165,7 @@ export default {
         },
         submitComment(){
             if(this.newcomment.match(/^ *$/))return this.$message('评论不允许为空~')
-            this.$http.post('http://localhost:3000/api/newcomment/'+this.blog_id,
+            this.$http.post('/api/newcomment/'+this.blog_id,
             {content:this.newcomment,username:this.$store.getters.username}).then(
                 res=>{
                     this.$message(res.data.message)
@@ -182,7 +182,7 @@ export default {
             )
         },
         deleteComment(comment){
-            this.$http.post('http://localhost:3000/api/deleteComment',{
+            this.$http.post('/api/deleteComment',{
                 username:this.$store.getters.username,
                 comment_id:comment._id
             }).then(
@@ -196,7 +196,7 @@ export default {
             )
         },
         deleteReply(reply){
-            this.$http.post('http://localhost:3000/api/deleteReply',{
+            this.$http.post('/api/deleteReply',{
                 username:this.$store.getters.username,
                 reply_id:reply._id
             }).then(
@@ -210,7 +210,7 @@ export default {
             )
         },
         ToggleComment(comment){
-            this.$http.post('http://localhost:3000/api/A/togglecomment',
+            this.$http.post('/api/A/togglecomment',
             {comment_id:comment._id,state:comment.hidden}).then(
                 res=>{
                     this.$message(res.data.message)
@@ -223,7 +223,7 @@ export default {
             )
         },
         ToggleReply(reply){
-            this.$http.post('http://localhost:3000/api/A/togglereply',
+            this.$http.post('/api/A/togglereply',
             {reply_id:reply._id,state:reply.hidden}).then(
                 res=>{
                     this.$message(res.data.message)

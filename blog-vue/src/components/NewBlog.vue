@@ -54,7 +54,7 @@ export default {
             }
             if(!title.match(/^ *$/)){
                 if(!blog.match(/^ *$/)){
-                this.$http.post("http://localhost:3000/api/"+this.$store.getters.username+'/newblog',data)
+                this.$http.post("/api/"+this.$store.getters.username+'/newblog',data)
                 .then(
                     res=>{
                         if(res.data.message){

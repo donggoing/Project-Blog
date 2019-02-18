@@ -427,18 +427,6 @@ module.exports=function(db){
                             console.log(err)
                             res.json({success:0,message:"状态异常,请检查是否已删除~"})
                         }
-                        // User.update({username:askUser},{$pull:{blogs:blog_id}},(uperr,result)=>{
-                        //     if(uperr){
-                        //         res.json({success:0,message:"博客已删除(他人不可见)，但个人页面仍未更新~"})
-                        //     }else{
-                        //         res.json({success:1,message:"删除成功~"})
-                        //         for(var i=0;i<blog.comments.length;i++){    
-                        //             Reply.remove({$in:blog.comments[i].replies})    
-                        //             Comment.findByIdAndRemove(blog.comments[i]._id,(removeerr)=>{
-                        //                 if(removeerr)console.log(removeerr)
-                        //             })
-                        //         }
-                        //     }
                     }
                 }
             }) 
@@ -466,7 +454,6 @@ module.exports=function(db){
                             comment.delete=true
                             comment.content=""
                             comment.save()
-                            // Blogs.findByIdAndUpdate(comment.blog_id,{$pull:{comments:comment_id}}).exec()
                             User.updateOne({username:user},{$pull:{comments:comment_id}}).exec()
                             res.json({success:1,message:"删除成功"})
                         }
@@ -501,7 +488,6 @@ module.exports=function(db){
                             reply.delete=true
                             reply.content=""
                             reply.save()    
-                            // Comment.findByIdAndUpdate(reply.comment_id,{$pull:{replies:reply_id}})
                             User.updateOne({username:user},{$pull:{replies:reply_id}}).exec()
                             res.json({success:1,message:"删除成功"})
                         }

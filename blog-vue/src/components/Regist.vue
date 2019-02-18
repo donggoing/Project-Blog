@@ -156,7 +156,7 @@ export default {
                 }
             if(warn["warn"])return false;
             else{		  
-                this.$http.post('http://localhost:3000/regist',
+                this.$http.post('/regist',
                     {
                         user: user,
                         tele: tele,

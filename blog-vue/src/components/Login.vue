@@ -88,7 +88,7 @@
             }
         if(warn["warn"])return false;
         else{
-          this.$http.post('http://localhost:3000',{
+          this.$http.post('',{
             username:user,
             password:pw
           })

@@ -11,6 +11,7 @@ import AllBlogs from '@/components/AllBlogs'
 import ManageBlogs from '@/components/ManageBlogs'
 import ManageABlog from '@/components/ManageABlog'
 import MyComments from '@/components/MyComments'
+import ERROR404 from '@/components/404'
 
 Vue.use(Router)
 
@@ -92,6 +93,14 @@ export const constantRouter =
     component: MyComments,
     meta: {
       title: '我的评论'
+    }
+  },
+  {
+    path: '/404',
+    name: 'NotFound',
+    component: ERROR404,
+    meta: {
+      title: 'NotFound'
     }
   }
 ]
@@ -199,41 +208,6 @@ router.beforeEach((to, from, next) => {
       }
     )
   } else addRouters(to, next)
-  // if (store.getters.isLogin) { // 判断是否登录
-  //   if (whiteList.indexOf(to.path) !== -1) {
-  //     Vue.prototype.$message('请先退出登录')
-  //     next({ path: '/home' })
-  //   } else {
-  //     if (store.getters.roles.length === 0) { // 判断当前用户是否已拉取完user_info信息
-  //       Vue.prototype.$http.get('http://localhost:3000/api/getinfo').then(
-  //         res => { // 拉取info
-  //           const roles = res.data.roles
-  //           store.commit('setRoles', roles)
-  //           store.dispatch('GenerateRoutes', roles).then(() => { // 生成可访问的路由表
-  //             var extraRouters = store.getters.addRouters
-  //             router.addRoutes(extraRouters) // 动态添加可访问路由表
-  //             // next({ ...to, replace: true }) // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
-  //             if (whiteList.indexOf(to.path) !== -1) next({path: to.path})
-  //             else next({path: '/home'})
-  //           })
-  //         }
-  //         ,
-  //         err => {
-  //           console.log(err)
-  //           next('/404')
-  //         })
-  //     } else {
-  //       next() // 当有用户权限的时候，说明所有可访问路由已生成 如访问没权限的全面会自动进入404页面
-  //     }
-  //   }
-  // } else {
-  //   if (whiteList.indexOf(to.path) !== -1) { // 在免登录白名单，直接进入
-  //     next()
-  //   } else {
-  //     Vue.prototype.$message('请先登录')
-  //     next('/login') // 否则全部重定向到登录页
-  //   }
-  // }
 })
 
 router.afterEach(route => {
@@ -243,12 +217,6 @@ router.afterEach(route => {
 export default router
 
 export const asyncRouterMap = [
-  // {
-  //   path: '/homeforadmin',
-  //   component: HomeForAdmin,
-  //   name: 'homeforadmin',
-  //   meta: { role: ['admin'], title: '主页' }
-  // },
   {
     path: '/manageblogs',
     component: ManageBlogs,

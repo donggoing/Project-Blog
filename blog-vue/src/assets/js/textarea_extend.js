@@ -5,6 +5,7 @@ function getCursortPosition (ctrl) {
     var Sel = document.selection.createRange()
     Sel.moveStart('character', -ctrl.value.length)
     CaretPos = Sel.text.length
+  // eslint-disable-next-line brace-style
   }
   // Firefox support
   else if (ctrl.selectionStart || ctrl.selectionStart === '0') { CaretPos = ctrl.selectionStart }

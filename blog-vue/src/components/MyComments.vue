@@ -68,7 +68,7 @@ export default {
             this.$router.push({path:"/blog",query:{blog_id:id}})
         },
         getdata(){
-            this.$http.post('http://localhost:3000/api/getcomments',
+            this.$http.post('/api/getcomments',
             {page:this.currentPage,limit:this.pageSize})
             .then(
                 res=>{

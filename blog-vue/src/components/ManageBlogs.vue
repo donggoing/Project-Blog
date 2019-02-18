@@ -95,7 +95,7 @@ export default {
         getblogs(){
             this.searching=0
             this.refreshTime=this.$moment(Date.now()).format('HH:mm:ss')
-            this.$http.post('http://localhost:3000/api/A/getallblogs',{
+            this.$http.post('/api/A/getallblogs',{
                 page: this.currentPage,limit:this.pageSize
             }).then(
             res=>{
@@ -129,7 +129,7 @@ export default {
         doSearch(){
             var queryType=this.queryType, 
                 queryVal=this.queryVal
-            this.$http.post('http://localhost:3000/api/A/search',{
+            this.$http.post('/api/A/search',{
                 val:queryVal,
                 type:queryType,
                 page:this.currentPage,
@@ -166,7 +166,7 @@ export default {
             this.currentPage = currentPage;
         },
         Toggle(blog){
-            this.$http.post('http://localhost:3000/api/A/toggleblog',
+            this.$http.post('/api/A/toggleblog',
             {blog_id:blog._id,state:blog.hidden}).then(
                 res=>{
                     this.$message(res.data.message)

@@ -75,7 +75,7 @@ export default {
         },
         getblogs(){
             this.refreshTime=this.$moment(Date.now()).format('HH:mm:ss')
-            this.$http.post('http://localhost:3000/api/'+this.$store.getters.username+'/getblogs',{
+            this.$http.post('/api/'+this.$store.getters.username+'/getblogs',{
                 page: this.currentPage,limit:this.pageSize
             }).then(
             res=>{
@@ -109,7 +109,7 @@ export default {
         doSearch(){
             var queryType=this.queryType, 
                 queryVal=this.queryVal
-                this.$http.post('http://localhost:3000/api/search',{
+                this.$http.post('/api/search',{
                 type:2,
                 val:queryVal,
                 page:this.currentPage,
@@ -150,7 +150,7 @@ export default {
             this.$router.push({path:'/editblog',query:{blog_id:id}})
         },
         deleteblog(id){
-            this.$http.post('http://localhost:3000/api/deleteblog',{blog_id:id,username:this.$store.getters.username}).then(
+            this.$http.post('/api/deleteblog',{blog_id:id,username:this.$store.getters.username}).then(
                 res=>{
                     this.$message(res.data.message)
                     this.refresh()
