@@ -60,11 +60,12 @@ export default {
         left:0;
     }
 
-    #editArea{
+     #edit >>> #editArea{
         color:white;
         width: 100%;
-        height: 520px;
-        max-height: 600px; 
+        padding:5px;
+        min-height: 520px !important;
+        max-height: 600px !important; 
         background-color: dimgrey;
     }
 
