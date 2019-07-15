@@ -14,10 +14,9 @@
 
 <script>
 import Menu from '@/components/NavMenu'
-import Footer from '@/components/Footer'
 export default {
   name: 'App',
-  components:{Footer,Menu}
+  components:{Menu}
 } 
 </script>
 
