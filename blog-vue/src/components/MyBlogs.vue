@@ -42,7 +42,8 @@
             background
             >
         </el-pagination>
-    </div>    
+        <footer></footer>
+    </div>
 </template>
 
 <script>
@@ -87,8 +88,7 @@ export default {
                         res.data.blogs[i].lastPostDate=this.$moment(this.$moment.utc(res.data.blogs[i].lastPostDate).toDate()).format('YYYY-MM-DD HH:mm:ss')
                     }
                     this.blogs=res.data.blogs
-                    if(this.blogs.length>0)this.empty=false
-                    else this.empty=true
+                    this.empty=(this.blogs.length===0)
                 }
                 else{
                     this.$message(res.data.message)
@@ -109,7 +109,7 @@ export default {
         doSearch(){
             var queryType=this.queryType, 
                 queryVal=this.queryVal
-                this.$http.post('/api/search',{
+            this.$http.post('/api/search',{
                 type:2,
                 val:queryVal,
                 page:this.currentPage,
@@ -175,7 +175,9 @@ export default {
 
     h2{
         font-size:35px;
-        margin: 10px
+        margin: 10px;
+        font-size:30px;
+        margin-top:10px;
     }
 
     #beHidden{

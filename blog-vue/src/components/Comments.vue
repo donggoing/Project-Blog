@@ -202,7 +202,8 @@ export default {
 
 <style scoped>
     #comments{
-        margin-bottom:40px
+        margin-bottom:40px;
+        background-color: rgba(250,250,250,.85);
     }
 
     .comment_container{

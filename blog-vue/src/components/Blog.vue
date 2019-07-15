@@ -1,6 +1,5 @@
 <template>
     <div id="blog">
-        <Menu></Menu>
         <div id="container">
             <h1>{{blog.title}}</h1>
             <p class="date">首次提交：{{blog.postDate}}</p>
@@ -10,10 +9,9 @@
                 @click="modify">
                 修改
             </el-button>
-            <hr>
-                <div id="show-content"></div>
-            <hr>
-            
+            <hr/>
+            <div id="show-content"></div>
+            <hr/>
             <div id="comment-container">
                 <h2>评论区</h2>
                 <Comments :blog_id='blog_id'/>
@@ -22,7 +20,7 @@
     </div>
 </template>
 
-<script>
+<script scoped>
 import Comments from '@/components/Comments'
 import Menu from '@/components/NavMenu'
 export default {
@@ -48,10 +46,6 @@ export default {
                 console.log(err)
             }
         )
-    }
-    ,
-    mounted(){
-        
     }
     ,
     methods:{
@@ -82,15 +76,20 @@ export default {
     }
 
     #show-content{
+        background-color: rgba(250,250,250,.85);
         width:100%;
         min-width:800px;
-        min-height:200px
+        
     }
 
     .date{
         color:grey;
         text-align: left;
         font-size:15px
+    }
+    #comment-container{
+        margin-top:50px;
+        position: relative;
     }
 
 </style>

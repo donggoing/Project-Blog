@@ -61,7 +61,7 @@ module.exports=function(db){
                             Blogs.findOneAndRemove({_id:doc._id}, function(removeerr, result){
                                 if (removeerr) {
                                     console.log("Error:" + removeerr);
-                                    res.json({success:0,message:"提交成功，但个人博客页面暂时不可见"})
+                                    res.json({success:1,message:"提交成功，但个人博客页面暂时不可见"})
                                 }
                                 else {
                                     console.log("Result:" + result);
@@ -255,7 +255,7 @@ module.exports=function(db){
             (err,result)=>{
                 if(err){
                     console.log(err)
-                    res.json({success:0,message:"获取失败~"})
+                    res.status(404).json({success:0,message:"获取失败~"})
                 } else {
                     comments=[...result.comments,...result.replies]
                     res.json({success:1,
@@ -318,7 +318,8 @@ module.exports=function(db){
     api.get('/getblog/:blog_id',(req,res)=>{
         var blog_id=req.params.blog_id
         Blogs.findById(blog_id,(err,blog)=>{
-            if(err)return res.json({success:0,message:"博客获取异常"})
+            //找不到文件
+            if(err)return res.status(404).json({success:0,message:"博客获取异常"})
             else{
                 return res.json({success:1,message:"成功获取~",data:blog})
             }
@@ -370,7 +371,7 @@ module.exports=function(db){
         }})
         .exec((err,blog)=>{
             if(err){
-                res.json({success:0,message:"服务器错误，请稍后再试~"})
+                res.status(500).json({success:0,message:"服务器错误，请稍后再试~"})
             }else{
                 var comments=blog.comments
                 for(var i=0;i<comments.length;i++){

@@ -1,5 +1,5 @@
 <template>
-    <el-menu id="menu" :default-active="this.$route.path.replace('/','')" class="el-menu-demo" mode="horizontal" router>
+    <el-menu v-if="!(this.$route.name==='Login'||this.$route.name==='Regist')" id="menu" :default-active="this.$route.path.replace('/','')" class="el-menu-demo" mode="horizontal" router>
         <el-menu-item v-if="this.$store.getters.roles.indexOf('admin')===-1" index="allblogs">博客园</el-menu-item>
         <el-menu-item v-else index="manageblogs">管理博客</el-menu-item>
         <el-menu-item index="home">我的博客</el-menu-item>

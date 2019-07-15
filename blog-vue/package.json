@@ -5,6 +5,8 @@
   "author": "donggoing <374766849@qq.com>",
   "private": true,
   "scripts": {
+    "server": "node ../Server/bin/www",
+    "startAll": "concurrently \"npm run start\" \"npm run server\" ",
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
@@ -15,6 +17,7 @@
   },
   "dependencies": {
     "axios": "^0.18.1",
+    "concurrently": "^4.1.1",
     "element-ui": "^2.10.0",
     "highlight.js": "^9.15.8",
     "iview": "^3.4.2",

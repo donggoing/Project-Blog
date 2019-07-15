@@ -1,12 +1,10 @@
 <template>
   <div id='Home'>
-  <Menu></Menu>
     <div>
-      <h2>MyBlogs</h2>
+      <h2>我的博客</h2>
        <MyBlogs id="myblogs">
        </MyBlogs>
     </div>
-
   </div>
 </template>
 
@@ -16,7 +14,6 @@ import Menu from '@/components/NavMenu'
 export default {
   name: 'Home',
   data () {
-    // 
     return {
       username: this.$store.getters.username||'User',
       blogtitle: "",
@@ -29,33 +26,7 @@ export default {
       }
   },
   components:{MyBlogs,Menu},
-  methods:{
-
-  // ,
-  //   submit(){
-  //     var title=this.blogtitle
-  //     var blog=this.blogcontent
-  //     if(!title.match(/^ *$/)){
-  //       if(!blog.match(/^ *$/)){
-  //       this.$http.post("/api/"+this.username+"/newblog",{
-  //         title : title,
-  //         newblog: blog
-  //       }).then(
-  //         res=>{
-  //           this.$message(res.data.message)
-  //         },
-  //         err=>{
-  //           console.log(err)
-  //           this.$message("提交失败了~请重试~")
-  //         })
-  //       }else{
-  //         this.$message("正文请勿输入空白~")
-  //       }
-  //     }else{
-  //       this.$message("标题请勿输入空白~")
-  //     }
-  //   }
-  }
+  methods:{}
 }
 
 </script>

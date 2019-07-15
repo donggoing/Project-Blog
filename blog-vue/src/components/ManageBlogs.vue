@@ -1,6 +1,5 @@
 <template>
     <div id="container">
-        <Menu></Menu>
         <div id="manageblogs">
             <div id="search">
                 <el-select style="float:left" id="searchWay" value-key="name" placeholder="请选择查询方式" v-model="queryType">

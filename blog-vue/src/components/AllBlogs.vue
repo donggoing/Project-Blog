@@ -1,6 +1,5 @@
 <template>
     <div id="allblogs">
-        <Menu></Menu>
         <div id="container">
             <div id="search">
                 <el-select style="float:left" id="searchWay" value-key="name" placeholder="请选择查询方式" v-model="queryType">
@@ -27,7 +26,7 @@
             <div id="blogs" v-if="!empty">
                 <div class="blog" v-for="blog in blogs" :key="blog._id"  >
                     <div v-if="!blog.hidden">
-                        <h2><a href="" @click="toBlog(blog)">{{blog.title}}</a>
+                        <h2 style="font-size:30px;margin-top:10px"><a href="" @click="toBlog(blog)">{{blog.title}}</a>
                         </h2>
                             <p id="bloger">博主：{{blog.postUser}}</p>
                             <p class="date">首次提交时间：{{blog.postDate}}</p>

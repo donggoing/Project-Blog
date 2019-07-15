@@ -1,6 +1,5 @@
 <template>
     <div id="mycomments">
-        <Menu></Menu>
         <div id="container">
             <div v-if="!empty" id="comments">
                 <div class="comment_container" v-for="comment in comments" :key="comment">
@@ -56,7 +55,7 @@ export default {
     watch:{
         'currentPage':'getdata'
     },
-    mounted() {
+    created() {
         this.getdata()
     },
     components:{Menu},

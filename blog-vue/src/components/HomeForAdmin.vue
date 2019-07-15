@@ -1,6 +1,5 @@
 <template>
     <div>
-        <Menu></Menu>
         <a href='' v-on:click='logout' >退出</a><br/>
         <router-link :to="{path:'/manageblogs'}" >管理博客及评论</router-link>
     </div>

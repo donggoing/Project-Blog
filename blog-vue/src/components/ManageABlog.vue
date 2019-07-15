@@ -1,6 +1,5 @@
 <template>
     <div id="blog">
-        <Menu></Menu>
         <router-link :to="{path:'/manageblogs'}"><p id='return'>←返回</p></router-link>
         <h1>{{blog.title}}</h1>
         <p class="date">首次提交：{{blog.postDate}}</p>

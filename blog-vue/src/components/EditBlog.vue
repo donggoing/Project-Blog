@@ -1,6 +1,5 @@
 <template>
     <div id="editblog">
-        <Menu></Menu>
         <div id="container">
             <el-button v-on:click="returnBlog" id='return'>←返回</el-button>
             <div v-if="success">
@@ -26,6 +25,14 @@ export default {
             success:true
         }
     },
+    beforeRouteLeave(to, from, next) {
+        const answer = window.confirm('是否确定要离开编辑？')
+        if (answer) {
+        next()
+        } else {
+        next(false)
+        }
+    },
     components:{Edit,Menu},
     created() {
         this.blog_id=this.$route.query.blog_id
@@ -45,6 +52,7 @@ export default {
     mounted() {
         let _this = this
         //离开提示
+        
         window.onbeforeunload = function (e) {
             if(_this.$route.path =="/editblog"){
                 e = e || window.event;

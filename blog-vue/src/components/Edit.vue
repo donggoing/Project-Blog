@@ -42,18 +42,20 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
     #container{
         width:100%;
         min-width:1200px;
         position: relative;
         text-align: left;
+        height: 600px;
     }
 
     #edit{
         display:inline-block;
         width:50%;
-        height:600px;
+        height:520px;
+        max-height: 600px;
         position:absolute;
         left:0;
     }
@@ -62,7 +64,7 @@ export default {
         color:white;
         width: 100%;
         height: 520px;
-        max-height: 600px;
+        max-height: 600px; 
         background-color: dimgrey;
     }
 
@@ -73,7 +75,6 @@ export default {
         width:50%;
         position:absolute;
         right:0;
-        /* height: 90%; */
         overflow: scroll;
     }
 

@@ -207,7 +207,8 @@ router.beforeEach((to, from, next) => {
         console.log(err)
       }
     )
-  } else addRouters(to, next)
+  } else next()
+  // } else addRouters(to, next)
 })
 
 router.afterEach(route => {

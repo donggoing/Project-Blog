@@ -1,14 +1,24 @@
 
 <template>
   <div id="app">
-   <router-view></router-view>
+    <Menu></Menu>
+    <router-view></router-view>
+    <el-footer id="footer">
+      <p>Contact:<a href="mailto:374766849@qq.com">chenyd35@mail2.sysu.edu.cn</a></p>
+        <p>Repo:<a href="https://github.com/donggoing/Project-Blog" target="_blank">https://github.com/donggoing/Project-Blog</a></p>
+
+    </el-footer>
+    <!-- <Footer id="footer"></Footer> -->
   </div>
 </template>
 
 <script>
+import Menu from '@/components/NavMenu'
+import Footer from '@/components/Footer'
 export default {
-  name: 'App'
-}
+  name: 'App',
+  components:{Footer,Menu}
+} 
 </script>
 
 <style>
@@ -25,5 +35,17 @@ export default {
     text-align: left;
     color: #2c3e50;
   }
+  #footer{
+        text-align: center;
+        padding: 0;
+        height:100px;
+        bottom:20px;
+        margin-top:100px;
+        margin-bottom: 50px;
+    }
+    
+    #footer a{
+        color:dimgrey;
+    }
 </style>
 
