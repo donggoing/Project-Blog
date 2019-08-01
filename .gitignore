@@ -1,7 +1,6 @@
 .DS_Store
-/Server/node_modules
+*/node_modules
 session-store.db
-/blog-vue/node_modules
 /blog-vue/test/unit/coverage/
 /blog-vue/test/e2e/reports/
 /blog-vue/dist/

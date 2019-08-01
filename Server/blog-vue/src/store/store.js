@@ -46,17 +46,14 @@ export default new Vuex.Store({
     setRoles (state, roles) {
       state.roles = roles
     }
-
   },
 
   // 应用mutations
   actions: {
-
     // 设置登陆状态
     SetUser ({commit}, user) {
       commit('userStatus', user)
     },
-
     GenerateRoutes ({commit}, roles) {
       var newRouters = []
       for (var i = 0; i < asyncRouterMap.length; i++) {

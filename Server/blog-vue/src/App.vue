@@ -8,7 +8,6 @@
         <p>Repo:<a href="https://github.com/donggoing/Project-Blog" target="_blank">https://github.com/donggoing/Project-Blog</a></p>
 
     </el-footer>
-    <!-- <Footer id="footer"></Footer> -->
   </div>
 </template>
 

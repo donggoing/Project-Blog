@@ -10,9 +10,7 @@ import Menu from '@/components/NavMenu'
 export default {
     name:'homeforadmin',
     data(){
-        return{
-
-        }
+        return{}
     },
     components:{Menu},
     methods:{
