@@ -275,7 +275,7 @@ module.exports=function(db){
         var user=req.params.user,
             page=req.body.page,
             pageSize=req.body.limit
-
+        if(user===null)res.json({success:0,message:"请提供用户名~"});
         User.findOne({username:user}).populate({path:'blogs',
         select:'title lastPostDate postUser postDate hidden _id',
         options:{sort:{'lastPostDate':-1}}}

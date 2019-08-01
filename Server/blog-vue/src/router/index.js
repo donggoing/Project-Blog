@@ -17,92 +17,90 @@ Vue.use(Router)
 
 var whiteList = ['/login', '/regist']
 
-export const constantRouter =
-[
-  {
-    path: '/login',
-    name: 'Login',
-    component: Login,
-    meta: {
-      title: '登录博客'
-      // isLogin: false
-    }
-  },
-  {
-    path: '/regist',
-    name: 'Regist',
-    component: Regist,
-    meta: {
-      title: '注册帐号'
-      // isLogin: false
-    }
-  },
-  {
-    path: '/home',
-    name: 'Home',
-    component: Home,
-    meta: {
-      title: '博客主页'
-      // isLogin: true
-    }
-  },
-  {
-    path: '/',
-    name: 'Home',
-    component: Home,
-    meta: {
-      title: '博客主页'
-      // isLogin: true
-    }
-  },
-  {
-    path: '/blog',
-    name: 'Blog',
-    component: Blog,
-    meta: {
-      title: '博客内容'
-    }
-  },
-  {
-    path: '/newblog',
-    name: 'NewBlog',
-    component: NewBlog,
-    meta: {
-      title: '新博客'
-    }
-  },
-  {
-    path: '/editblog',
-    name: 'EditBlog',
-    component: EditBlog,
-    meta: {
-      title: '编辑博客'
-    }
-  },
-  {
-    path: '/allblogs',
-    name: 'AllBlogs',
-    component: AllBlogs,
-    meta: {
-      title: '博客园'
-    }
-  },
-  {
-    path: '/mycomments',
-    name: 'MyComments',
-    component: MyComments,
-    meta: {
-      title: '我的评论'
-    }
-  },
-  {
-    path: '/404',
-    name: 'NotFound',
-    component: ERROR404,
-    meta: {
-      title: 'NotFound'
-    }
+export const constantRouter = [{
+  path: '/login',
+  name: 'Login',
+  component: Login,
+  meta: {
+    title: '登录博客'
+    // isLogin: false
   }
+},
+{
+  path: '/regist',
+  name: 'Regist',
+  component: Regist,
+  meta: {
+    title: '注册帐号'
+    // isLogin: false
+  }
+},
+{
+  path: '/home',
+  name: 'Home',
+  component: Home,
+  meta: {
+    title: '博客主页'
+    // isLogin: true
+  }
+},
+{
+  path: '/',
+  name: 'Home',
+  component: Home,
+  meta: {
+    title: '博客主页'
+    // isLogin: true
+  }
+},
+{
+  path: '/blog',
+  name: 'Blog',
+  component: Blog,
+  meta: {
+    title: '博客内容'
+  }
+},
+{
+  path: '/newblog',
+  name: 'NewBlog',
+  component: NewBlog,
+  meta: {
+    title: '新博客'
+  }
+},
+{
+  path: '/editblog',
+  name: 'EditBlog',
+  component: EditBlog,
+  meta: {
+    title: '编辑博客'
+  }
+},
+{
+  path: '/allblogs',
+  name: 'AllBlogs',
+  component: AllBlogs,
+  meta: {
+    title: '博客园'
+  }
+},
+{
+  path: '/mycomments',
+  name: 'MyComments',
+  component: MyComments,
+  meta: {
+    title: '我的评论'
+  }
+},
+{
+  path: '/404',
+  name: 'NotFound',
+  component: ERROR404,
+  meta: {
+    title: 'NotFound'
+  }
+}
 ]
 
 var router = new Router({
@@ -116,7 +114,9 @@ function addRouters (to, next) {
       Vue.prototype.$message('请先退出登录')
       const roles = store.getters.roles
       if (!roles || roles.length === 0) { // 判断当前用户是否已拉取完user_info信息
-        Vue.prototype.$http.get('http://localhost:3000/api/getinfo').then(
+        Vue.prototype.$http.get('/api/getinfo', {
+          withCredentials: true
+        }).then(
           res => { // 拉取info
             const roles = res.data.roles
             store.commit('setRoles', roles)
@@ -131,8 +131,7 @@ function addRouters (to, next) {
                 next(to.fullPath)
               }
             })
-          }
-          ,
+          },
           err => {
             console.log(err)
             store.commit('userStatus', null)
@@ -147,7 +146,9 @@ function addRouters (to, next) {
     } else {
       const roles = store.getters.roles
       if (!roles || roles.length === 0) { // 判断当前用户是否已拉取完user_info信息
-        Vue.prototype.$http.get('http://localhost:3000/api/getinfo').then(
+        Vue.prototype.$http.get('/api/getinfo', {
+          withCredentials: true
+        }).then(
           res => { // 拉取info
             const roles = res.data.roles
             store.commit('setRoles', roles)
@@ -161,8 +162,7 @@ function addRouters (to, next) {
                 next(to.fullPath)
               }
             })
-          }
-          ,
+          },
           err => {
             if (to.path === '/home' || to.path === '/') {
               document.title = '博客主页'
@@ -193,10 +193,14 @@ function addRouters (to, next) {
 }
 
 router.beforeEach((to, from, next) => {
-  if (!store.getters.isLogin && localStorage.getItem('UserName')) {
-    Vue.prototype.$http.post('http://localhost:3000/api/checkstate', {username: localStorage.getItem('UserName')}).then(
+  if (!localStorage.hasOwnProperty('UserName')) {
+    Vue.prototype.$http.post('/api/checkstate', {
+      username: localStorage.getItem('UserName')
+    }, {
+      withCredentials: true
+    }).then(
       res => {
-        if (res.data.isLogin)store.dispatch('SetUser', localStorage.getItem('UserName'))
+        if (res.data.isLogin) store.dispatch('SetUser', localStorage.getItem('UserName'))
         else store.dispatch('SetUser', null)
         addRouters(to, next)
       },
@@ -217,18 +221,30 @@ router.afterEach(route => {
 
 export default router
 
-export const asyncRouterMap = [
-  {
-    path: '/manageblogs',
-    component: ManageBlogs,
-    name: 'manageblogs',
-    meta: {role: ['admin'], title: '管理博客'}
+export const asyncRouterMap = [{
+  path: '/manageblogs',
+  component: ManageBlogs,
+  name: 'manageblogs',
+  meta: {
+    role: ['admin'],
+    title: '管理博客'
+  }
+},
+{
+  path: '/manageablog',
+  component: ManageABlog,
+  name: 'manageablog',
+  meta: {
+    role: ['admin'],
+    title: '管理博客'
+  }
+},
+{
+  path: '*',
+  redirect: '/404',
+  meta: {
+    role: ['all']
   },
-  {
-    path: '/manageablog',
-    component: ManageABlog,
-    name: 'manageablog',
-    meta: {role: ['admin'], title: '管理博客'}
-  },
-  { path: '*', redirect: '/404', meta: {role: ['all']}, hidden: true }
+  hidden: true
+}
 ]

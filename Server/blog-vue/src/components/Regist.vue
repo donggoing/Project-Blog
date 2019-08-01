@@ -207,13 +207,18 @@ export default {
         height: auto;
         margin: 100px auto 20px auto;
         text-align: center;
+        position:relative;
+        right:50px;
+    }
+    #form1{
+        width: 300px;
     }
     #regist{
         margin-bottom:40px
     }
     #Sup p,#Sup label{
         position: absolute;
-        left:10px;
+        left:30px;
         text-align: left;
     }
     #Sup form div{
@@ -227,7 +232,7 @@ export default {
     }
     #Sup p.warn{
         position: absolute;
-        left: 270px;
+        left: 300px;
         margin: 0;
         width: 200px;
         color: red;
