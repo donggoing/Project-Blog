@@ -19,7 +19,7 @@
     "axios": "^0.18.1",
     "concurrently": "^4.1.1",
     "element-ui": "^2.10.0",
-    "highlight.js": "^9.15.8",
+    "highlight.js": "^10.4.1",
     "iview": "^3.4.2",
     "mavon-editor": "^2.7.5",
     "moment": "^2.24.0",
